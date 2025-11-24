@@ -93,12 +93,16 @@ export const ReportModal: React.FC<Props> = ({ isOpen, onClose, reportData }) =>
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
+        let timeoutId: ReturnType<typeof setTimeout>;
         if (isOpen) {
             setShowModal(true);
         } else {
             // Delay closing for animation
-            setTimeout(() => setShowModal(false), 300);
+            timeoutId = setTimeout(() => setShowModal(false), 300);
         }
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+        };
     }, [isOpen]);
 
     if (!showModal && !isOpen) return null;
