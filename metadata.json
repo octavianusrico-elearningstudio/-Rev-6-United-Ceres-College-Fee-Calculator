@@ -1,0 +1,5 @@
+{
+  "name": "(Rev 6) United Ceres College Fee Calculator",
+  "description": "An interactive course fee calculator for United Ceres College. It helps estimate total course fees, including miscellaneous add-ons, installment plans, and optional living expenses. It also includes a refund estimator based on withdrawal dates.",
+  "requestFramePermissions": []
+}
