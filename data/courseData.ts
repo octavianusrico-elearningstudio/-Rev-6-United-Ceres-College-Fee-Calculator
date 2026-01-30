@@ -8,12 +8,8 @@ const standardMiscFees: MiscFee[] = [
     { id: 'graduation', name: 'Graduation Ceremony Fee', amount: 350, category: 'standard' },
     { id: 'photocopy-a4-bw', name: 'Photocopying A4 B&W (per page)', amount: 0.10, isPerUnit: true, category: 'standard' },
     { id: 'photocopy-a4-color', name: 'Photocopying A4 Color (per page)', amount: 0.30, isPerUnit: true, category: 'standard' },
-    { id: 'photocopy-a3-bw', name: 'Photocopying A3 B&W (per page)', amount: 0.20, isPerUnit: true, category: 'standard' },
-    { id: 'photocopy-a3-color', name: 'Photocopying A3 Color (per page)', amount: 0.50, isPerUnit: true, category: 'standard' },
-    { id: 'printing-a4-bw', name: 'Printing A4 B&W (per page)', amount: 1, isPerUnit: true, category: 'standard' },
-    { id: 'printing-a4-color', name: 'Printing A4 Color (per page)', amount: 0.5, isPerUnit: true, category: 'standard' },
-    { id: 'printing-a3-bw', name: 'Printing A3 B&W (per page)', amount: 2, isPerUnit: true, category: 'standard' },
-    { id: 'printing-a3-color', name: 'Printing A3 Color (per page)', amount: 1, isPerUnit: true, category: 'standard' }, // Note: PDF says "1 per A3 page" for download/print, but also "0.50 per A3 page" for photocopying. Assuming "1" for printing is correct.
+    { id: 'photocopy-a4-bw-p', name: 'Printing A4 B&W (per page)', amount: 1, isPerUnit: true, category: 'standard' },
+    { id: 'photocopy-a4-color-p', name: 'Printing A4 Color (per page)', amount: 0.5, isPerUnit: true, category: 'standard' },
     { id: 't-shirt', name: 'UCC T-shirt', amount: 20, isPerUnit: true, category: 'service' },
     { id: 'guardian', name: 'Guardian Arrangement Admin Fee', amount: 100, notes: 'Non-refundable', category: 'service' },
     { id: 'airport-pickup', name: 'Airport Pick-up Service', amount: 180, notes: 'Non-refundable', category: 'service' },
@@ -175,5 +171,41 @@ export const courseData: Course[] = [
     id: 'pgd-m', name: 'Postgraduate Diploma in Business Administration (Mandarin)', abbreviation: 'PGD(M)', durationMonths: 8, modules: 8,
     fees: { application: { local: 150, international: 400 }, course: 13600, material: 400, examination: 400, administrative: 150 },
     miscFees: standardMiscFees
+  },
+  {
+    id: 'gce-o-level', 
+    name: 'Preparatory Course (Upper Secondary) for Singapore-Cambridge General Certificate of Education Ordinary Level (GCE O-Level)', 
+    abbreviation: 'OLVL', 
+    durationMonths: 24, 
+    modules: 7,
+    fees: { 
+        application: { local: 150, international: 400 }, 
+        course: 36950, 
+        material: 3400, 
+        examination: 1200, 
+        administrative: 800 
+    },
+    miscFees: [
+        ...standardMiscFees.filter(f => f.id !== 're-module'),
+        { id: 're-module', name: 'Re-Module Fee (Per module)', amount: 6000, category: 'standard' }
+    ]
+  },
+  {
+    id: 'gce-a-level', 
+    name: 'Preparatory Course for Singapore-Cambridge General Certificate of Education Advanced Level (GCE A-Level)', 
+    abbreviation: 'ALEVEL', 
+    durationMonths: 24, 
+    modules: 5,
+    fees: { 
+        application: { local: 150, international: 400 }, 
+        course: 42450, 
+        material: 3400, 
+        examination: 1200, 
+        administrative: 800 
+    },
+    miscFees: [
+        ...standardMiscFees.filter(f => f.id !== 're-module'),
+        { id: 're-module', name: 'Re-Module Fee (Per module)', amount: 9500, category: 'standard' }
+    ]
   }
 ];
